@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 // 10430번 나머지
 // https://www.acmicpc.net/problem/10430
-public class Remainder {
+public class Bj10430 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

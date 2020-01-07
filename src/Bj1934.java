@@ -2,9 +2,9 @@ import java.util.Scanner;
 
 // 1934번 최소공배수
 // https://www.acmicpc.net/problem/1934
-public class Lcm {
+public class Bj1934 {
 
-    public static void main1(String[] args) {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
 

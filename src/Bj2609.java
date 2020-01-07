@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 // 2609번 최대공약수와 최소공배수
 // https://www.acmicpc.net/problem/2609
-public class GcdAndLcm {
+public class Bj2609 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n1 = sc.nextInt();
