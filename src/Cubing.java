@@ -21,15 +21,31 @@ public class Cubing {
                     rolling(direction);
                     rolling(direction);
                 }
-                rubiksCube.printUp();
             }
+            rubiksCube.printUp();
         }
     }
 
     static void rolling(char c) {
         switch (c) {
+            case 'U':
+                rubiksCube.rollingUp();
+                break;
+            case 'D':
+                rubiksCube.rollingDown();
+                break;
+            case 'F':
+                rubiksCube.rollingFront();
+                break;
+            case 'B':
+                rubiksCube.rollingBack();
+                break;
             case 'L':
                 rubiksCube.rollingLeft();
+                break;
+            case 'R':
+                rubiksCube.rollingRight();
+                break;
         }
     }
 }
@@ -78,43 +94,112 @@ class RubiksCube {
 
     // 윗 면을 시계방향으로 돌림
     public void rollingUp() {
-
+        rollingUpAndDown(0);
+        up = rotate90(up);
     }
 
     // 아랫 면을 시계방향으로 돌림
     public void rollingDown() {
+        rollingUpAndDown(2);
+        down = rotate90(down);
+    }
 
+    private void rollingUpAndDown(int l) {
+        char[] temp = new char[] {back[l][0], back[l][1], back[l][2]};
+
+        back[l][0] = left[l][0];
+        back[l][1] = left[l][1];
+        back[l][2] = left[l][2];
+
+        left[l][0] = front[l][0];
+        left[l][1] = front[l][1];
+        left[l][2] = front[l][2];
+
+        front[l][0] = right[l][0];
+        front[l][1] = right[l][1];
+        front[l][2] = right[l][2];
+
+        right[l][0] = temp[0];
+        right[l][1] = temp[1];
+        right[l][2] = temp[2];
     }
 
     // 앞 면을 시계방향으로 돌림
     public void rollingFront() {
-
+        rollingFrontAndBack(2);
+        front = rotate90(front);
     }
 
     // 뒷 면을 시계방향으로 돌림
-    public void rollingBack() {}
+    public void rollingBack() {
+        rollingFrontAndBack(0);
+        back = rotate90(back);
+    }
+
+    private void rollingFrontAndBack(int l) {
+        char[] temp = new char[] {up[l][0], up[l][1], up[l][2]};
+
+        up[l][0] = left[l][0];
+        up[l][1] = left[l][1];
+        up[l][2] = left[l][2];
+
+        left[l][0] = down[l][0];
+        left[l][1] = down[l][1];
+        left[l][2] = down[l][2];
+
+        down[l][0] = right[l][0];
+        down[l][1] = right[l][1];
+        down[l][2] = right[l][2];
+
+        right[l][0] = temp[0];
+        right[l][1] = temp[1];
+        right[l][2] = temp[2];
+    }
 
     // 왼쪽 면을 시계방향으로 돌림
     public void rollingLeft() {
-        // 뒷면 기억하기
-        char[] temp = new char[] {back[0][0], back[1][0], back[2][0]};
-        back[0][0] = down[0][0];
-        back[1][0] = down[1][0];
-        back[2][0] = down[2][0];
+        rollingLeftAndRight(0);
+        left = rotate90(left);
+    }
 
-        down[0][0] = front[0][0];
-        down[1][0] = front[1][0];
-        down[2][0] = front[2][0];
+    // 오른쪽 면을 시계방향으로 돌림
+    public void rollingRight() {
+        rollingLeftAndRight(2);
+        right = rotate90(right);
+    }
 
-        front[0][0] = up[0][0];
-        front[1][0] = up[1][0];
-        front[2][0] = up[2][0];
+    private void rollingLeftAndRight(int l) {
+        char[] temp = new char[] {back[0][l], back[1][l], back[2][l]};
+
+        back[0][l] = down[0][l];
+        back[1][l] = down[1][l];
+        back[2][l] = down[2][l];
+
+        down[0][l] = front[0][l];
+        down[1][l] = front[1][l];
+        down[2][l] = front[2][l];
+
+        front[0][l] = up[0][l];
+        front[1][l] = up[1][l];
+        front[2][l] = up[2][l];
 
         up[0][0] = temp[0];
         up[1][0] = temp[1];
         up[2][0] = temp[2];
     }
 
-    // 오른쪽 면을 시계방향으로 돌림
-    public void rollingRight() {}
+    private char[][] rotate90(char[][] arr) {
+        char[][] temp = new char[3][3];
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                temp[i][j] = arr[2-j][i];
+            }
+        }
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                arr[i][j] = temp[i][j];
+            }
+        }
+        return arr;
+    }
 }
