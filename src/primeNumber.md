@@ -43,3 +43,13 @@ public static boolean isPrimeNumber2(int val) {
     return isPrime[val];
 }
 ```
+
+
+
+
+
+------
+
+관련 문제
+
+1. [백준 1978번](https://www.acmicpc.net/problem/1978)
