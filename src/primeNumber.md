@@ -8,7 +8,7 @@
 자기 자신보다 작은 자연수로 나누어봐서, 1 이외의 다른 수로 나누어지면 소수가 아니다.
 
 
-```$xslt
+```java
 public static boolean isPrimeNumber(int val) {
     if (val == 1) return false;
     for (int i = 2; i < val; i++) {
@@ -27,7 +27,7 @@ public static boolean isPrimeNumber(int val) {
 3은 소수이고, 3의 배수인 3, 6, 9, ...은 소수가 될 수 없다.
 5는 소수이고, 5의 배수인 5, 10, 15, ...은 소수가 될 수 없다.
 
-```$xslt
+```java
 public static boolean isPrimeNumber2(int val) {
     boolean[] isPrime = new boolean[1001];
     Arrays.fill(isPrime, true); // isPrime 배열을 true로 초기화
