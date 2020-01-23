@@ -1,6 +1,8 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
+// 15662번 톱니바퀴(2)
+// https://www.acmicpc.net/problem/15662
 public class Bj15662 {
 
     private static int gearNum;
