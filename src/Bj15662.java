@@ -5,13 +5,13 @@ import java.util.Scanner;
 // https://www.acmicpc.net/problem/15662
 public class Bj15662 {
 
-    private static int gearNum;
+    private static int gearNum; // 1 <= gearNum <= 1,000
     private static Gear[] gears;
     private static boolean[] isRotate;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        gearNum = sc.nextInt(); // 1 <= gearNum <= 1,000
+        gearNum = sc.nextInt();
         gears = new Gear[gearNum];
         isRotate = new boolean[gearNum];
         for(int i = 0; i < gearNum; i++) {
