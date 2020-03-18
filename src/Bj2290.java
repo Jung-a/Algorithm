@@ -1,88 +1,111 @@
 import java.util.Scanner;
+// 15076 KB, 132 ms
 
+// 2290번 LCD Test
+// https://www.acmicpc.net/problem/2290
 public class Bj2290 {
+    private static int width;
+
+    private static void type1() { // "    "
+        for (int k = 0; k < width; k ++) {
+            System.out.print(" ");
+        }
+    }
+
+    private static void type2() { // " -- "
+        System.out.print(" ");
+        for (int k = 0; k < width-2; k ++) {
+            System.out.print("-");
+        }
+        System.out.print(" ");
+    }
+
+    private static void type3() { // "   |"
+        for (int k = 0; k < width-1; k ++) {
+            System.out.print(" ");
+        }
+        System.out.print("|");
+    }
+
+    private static void type4() { // "|   "
+        System.out.print("|");
+        for (int k = 0; k < width-1; k ++) {
+            System.out.print(" ");
+        }
+    }
+
+    private static void type5() { // "|  |"
+        System.out.print("|");
+        for (int k = 0; k < width-2; k ++) {
+            System.out.print(" ");
+        }
+        System.out.print("|");
+    }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int s = sc.nextInt(); // 1 <= s <= 10
         String n = sc.next(); // 0 <= n <= 9,999,999,999
-        int width = s + 2; // 가로 = s + 2
-        int height = 2 * s + 3; // 세로 = 2 * s + 3
+        width = s + 2; // 가로 = s + 2
 
-        for (int i = 0; i < height; i++) {
+        for (int i = 0; i < 2 * s + 3; i++) {
             for (int j = 0; j < n.length(); j++) {
-                if (i == 0) {
-                    if (n.charAt(j) == '1' || n.charAt(j) == '4') {
-                        for (int k = 0; k < width; k ++) {
-                            System.out.print(" ");
-                        }
-                    } else {
-                        System.out.print(" ");
-                        for (int k = 0; k < width-2; k ++) {
-                            System.out.print("-");
-                        }
-                        System.out.print(" ");
+                if (i == 0) { // 맨위
+                    switch (n.charAt(j)) {
+                        case '1':
+                        case '4':
+                            type1();
+                            break;
+                        default:
+                            type2();
                     }
-                } else if (i < height / 2 ){
-                    if (n.charAt(j) == '1' || n.charAt(j) == '2' || n.charAt(j) == '3' || n.charAt(j) == '7') {
-                        for (int k = 0; k < width-1; k ++) {
-                            System.out.print(" ");
-                        }
-                        System.out.print("|");
-                    } else if (n.charAt(j) == '5' || n.charAt(j) == '6'){
-                        System.out.print("|");
-                        for (int k = 0; k < width-1; k ++) {
-                            System.out.print(" ");
-                        }
-
-                    } else {
-                        System.out.print("|");
-                        for (int k = 0; k < width-2; k ++) {
-                            System.out.print(" ");
-                        }
-                        System.out.print("|");
+                } else if (i < (2 * s + 3) / 2 ){ // 중간위
+                    switch (n.charAt(j)) {
+                        case '1':
+                        case '2':
+                        case '3':
+                        case '7':
+                            type3();
+                            break;
+                        case '5':
+                        case '6':
+                            type4();
+                            break;
+                        default:
+                            type5();
                     }
-                } else if (i == height / 2) {
-                    if (n.charAt(j) == '1' || n.charAt(j) == '7' || n.charAt(j) == '0') {
-                        for (int k = 0; k < width; k ++) {
-                            System.out.print(" ");
-                        }
-                    } else {
-                        System.out.print(" ");
-                        for (int k = 0; k < width-2; k ++) {
-                            System.out.print("-");
-                        }
-                        System.out.print(" ");
+                } else if (i == (2 * s + 3) / 2) { // 중간
+                    switch (n.charAt(j)) {
+                        case '1':
+                        case '7':
+                        case '0':
+                            type1();
+                            break;
+                        default:
+                            type2();
                     }
-                } else if (i < height-1) {
-                    if (n.charAt(j) == '2') {
-                        System.out.print("|");
-                        for (int k = 0; k < width-1; k ++) {
-                            System.out.print(" ");
-                        }
-                    } else if (n.charAt(j) == '6' || n.charAt(j) == '8' || n.charAt(j) == '0'){
-                        System.out.print("|");
-                        for (int k = 0; k < width-2; k ++) {
-                            System.out.print(" ");
-                        }
-                        System.out.print("|");
-                    } else {
-                        for (int k = 0; k < width-1; k ++) {
-                            System.out.print(" ");
-                        }
-                        System.out.print("|");
+                } else if (i < (2 * s + 3)-1) { // 중간아래
+                    switch (n.charAt(j)) {
+                        case '6':
+                        case '8':
+                        case '0':
+                            type5();
+                            break;
+                        case '2':
+                            type4();
+                            break;
+                        default:
+                            type3();
                     }
                 } else {
-                    if (n.charAt(j) == '1' || n.charAt(j) == '4' || n.charAt(j) == '7') {
-                        for (int k = 0; k < width; k ++) {
-                            System.out.print(" ");
-                        }
-                    } else {
-                        System.out.print(" ");
-                        for (int k = 0; k < width-2; k ++) {
-                            System.out.print("-");
-                        }
-                        System.out.print(" ");
+                    switch (n.charAt(j)) {
+                        case '1':
+                        case '4':
+                        case '7':
+                            type1();
+                            break;
+                        default:
+                            type2();
                     }
                 }
                 System.out.print(" ");
@@ -91,11 +114,3 @@ public class Bj2290 {
         }
     }
 }
-
-//      --   --        --   --   --   --   --   --
-//   |    |    | |  | |    |       | |  | |  | |  |
-//   |    |    | |  | |    |       | |  | |  | |  |
-//      --   --   --   --   --        --   --
-//   | |       |    |    | |  |    | |  |    | |  |
-//   | |       |    |    | |  |    | |  |    | |  |
-//      --   --        --   --        --   --   --
