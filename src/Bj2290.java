@@ -1,5 +1,8 @@
-import java.util.Scanner;
-// 15076 KB, 132 ms
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+//import java.util.Scanner;
+import java.util.StringTokenizer;
+// 13792 KB, 104 ms
 
 // 2290번 LCD Test
 // https://www.acmicpc.net/problem/2290
@@ -42,10 +45,15 @@ public class Bj2290 {
         System.out.print("|");
     }
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int s = sc.nextInt(); // 1 <= s <= 10
-        String n = sc.next(); // 0 <= n <= 9,999,999,999
+    public static void main(String[] args)throws Exception{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+//        Scanner sc = new Scanner(System.in);
+        int s = Integer.parseInt(st.nextToken());
+//        int s = sc.nextInt(); // 1 <= s <= 10
+        String n = st.nextToken();
+//        String n = sc.next(); // 0 <= n <= 9,999,999,999
         width = s + 2; // 가로 = s + 2
 
         for (int i = 0; i < 2 * s + 3; i++) {
