@@ -34,6 +34,7 @@ public class Bj3568 {
             System.out.println(basicVariable + reverseString(variable) + " " + name + ";");
         }
     }
+    // 13104 KB, 76 ms
     private static String reverseString(StringBuilder sb) {
         String s = "";
         for (int i = sb.length()-1; i >= 0; i--) {
@@ -46,4 +47,18 @@ public class Bj3568 {
         }
         return s;
     }
+
+    // 13172 KB, 80 ms
+//    private static StringBuilder reverseString(StringBuilder sb) {
+//        StringBuilder newsb = new StringBuilder();
+//        for (int i = sb.length()-1; i >= 0; i--) {
+//            if (sb.charAt(i) == ']') {
+//                newsb.append("[]");
+//                i--;
+//            } else {
+//                newsb.append(sb.charAt(i));
+//            }
+//        }
+//        return newsb;
+//    }
 }
